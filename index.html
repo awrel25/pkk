@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeatAnamelta - Toko Daging Sapi Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f6f2;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            color: #5c3d2e;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #5c3d2e 0%, #8a5b45 100%);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #ff922b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff922b;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ff922b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #e57c1f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Products Section */
+        .products {
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: #ff922b;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            color: #ff922b;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-description {
+            color: #777;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Ratings Section */
+        .ratings {
+            background: linear-gradient(135deg, #f8f4f0 0%, #e9e1d8 100%);
+        }
+        
+        .rating-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            animation: fadeIn 1s ease;
+        }
+        
+        .average-rating {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .average-rating h3 {
+            margin-bottom: 10px;
+        }
+        
+        .stars {
+            color: #ffc107;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .rating-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #5c3d2e;
+        }
+        
+        .total-ratings {
+            color: #777;
+        }
+        
+        .reviews-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .reviews {
+            text-align: left;
+        }
+        
+        .review {
+            display: flex;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .review:last-child {
+            border-bottom: none;
+        }
+        
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .review-content {
+            flex-grow: 1;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .review-author {
+            font-weight: 600;
+        }
+        
+        .review-date {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .review-stars {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        
+        .review-text {
+            color: #555;
+        }
+        
+        /* Comment Form */
+        .comment-form {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        
+        .comment-form h3 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: white;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .avatar-upload {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .avatar-preview {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #ddd;
+        }
+        
+        .avatar-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: #5c3d2e;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1517244683847-7456b63c5969?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            opacity: 0.1;
+        }
+        
+        .contact .section-title {
+            color: white;
+            position: relative;
+        }
+        
+        .contact .section-title:after {
+            background: #ff922b;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            position: relative;
+        }
+        
+        .contact-info {
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-detail:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .contact-detail i {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: #ff922b;
+        }
+        
+        .contact-detail div {
+            font-size: 1.1rem;
+        }
+        
+        .contact-form {
+            animation: fadeInRight 1s ease;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            color: #333;
+        }
+        
+        .contact-form h3 {
+            color: #5c3d2e;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background: #3a2520;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #ff922b;
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .reviews-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-cow"></i>
+                <span>MeatAnamelta</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#ratings">Ulasan</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Daging Sapi Berkualitas Premium</h1>
+            <p>Menghadirkan cita rasa terbaik dengan kualitas daging sapi pilihan untuk masakan istimewa Anda</p>
+            <a href="#products" class="btn">Lihat Produk</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Daftar Produk</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Daging Slice">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Daging Slice 1kg</h3>
+                        <div class="product-price">Rp 75.000</div>
+                        <p class="product-description">Irisan tipis daging sapi, cocok untuk tumisan, barbeque, dan hotpot.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1595535873420-299938332f96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Daging Sirloin">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Daging Sirloin</h3>
+                        <div class="product-price">Rp 60.000</div>
+                        <p class="product-description">Potongan bagian punggung yang empuk dan berlemak seimbang, ideal untuk steak dan grill.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1607116667981-ff4b72a5d5c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Daging Tenderloin">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Daging Tenderloin</h3>
+                        <div class="product-price">Rp 55.000</div>
+                        <p class="product-description">Bagian paling empuk dari sapi, pilihan utama untuk olahan premium seperti steak.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1602472917252-63e6175465f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Daging Giling">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Daging Giling</h3>
+                        <div class="product-price">Rp 40.000</div>
+                        <p class="product-description">Daging sapi halus siap masak, cocok untuk bakso, burger, atau tumisan.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1558036117-15e82a2c9a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kepala dan Kaki Sapi">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kepala dan Kaki Sapi</h3>
+                        <div class="product-price">Rp 30.000</div>
+                        <p class="product-description">Cocok untuk sop, gulai, atau masakan khas tradisional.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1574856344992-8a487014eeb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jeroan Sapi">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Jeroan Sapi</h3>
+                        <div class="product-price">Rp 25.000</div>
+                        <p class="product-description">Tersedia berbagai pilihan jeroan segar seperti hati, babat, paru, dan usus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ratings Section -->
+    <section id="ratings" class="ratings">
+        <div class="container">
+            <h2 class="section-title">Ulasan Pelanggan</h2>
+            <div class="rating-container">
+                <div class="average-rating">
+                    <h3>Rating Rata-rata</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="rating-value">4.5</div>
+                    <div class="total-ratings">Berdasarkan 128 ulasan</div>
+                </div>
+                
+                <div class="reviews-container">
+                    <div class="reviews">
+                        <!-- Review 1 -->
+                        <div class="review">
+                            <div class="review-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Budi Santoso">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-header">
+                                    <div class="review-author">Budi Santoso</div>
+                                    <div class="review-date">19 Agustus 2025</div>
+                                </div>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-text">
+                                    Daging slice nya sangat fresh dan dipotong dengan ketebalan yang pas. Cocok banget untuk hotpot keluarga!
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 2 -->
+                        <div class="review">
+                            <div class="review-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sari Wijaya">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-header">
+                                    <div class="review-author">Sari Wijaya</div>
+                                    <div class="review-date">18 Agustus 2025</div>
+                                </div>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-text">
+                                    Tenderloinnya benar-benar premium! Empuk dan rasanya luar biasa. Pelayanannya juga cepat dan packing rapi.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 3 -->
+                        <div class="review">
+                            <div class="review-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Anton Pratama">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-header">
+                                    <div class="review-author">Anton Pratama</div>
+                                    <div class="review-date">16 Agustus 2025</div>
+                                </div>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="review-text">
+                                    Jeroan sapinya segar dan bersih. Cocok untuk gulai. Harganya juga terjangkau untuk kualitas segini.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Comment Form -->
+                    <div class="comment-form">
+                        <h3>Beri Ulasan Anda</h3>
+                        <form id="reviewForm">
+                            <div class="avatar-upload">
+                                <div class="avatar-preview">
+                                    <img src="https://randomuser.me/api/portraits/lego/1.jpg" id="avatarPreview" alt="Preview Avatar">
+                                </div>
+                                <div class="form-group">
+                                    <label for="avatar">Unggah Foto Profil</label>
+                                    <input type="file" id="avatar" accept="image/*">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Nama</label>
+                                    <input type="text" id="name" placeholder="Nama Anda" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" placeholder="Email Anda" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rating">Rating</label>
+                                <select id="rating" required>
+                                    <option value="">Pilih rating</option>
+                                    <option value="5">5 Bintang</option>
+                                    <option value="4">4 Bintang</option>
+                                    <option value="3">3 Bintang</option>
+                                    <option value="2">2 Bintang</option>
+                                    <option value="1">1 Bintang</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="comment">Ulasan</label>
+                                <textarea id="comment" placeholder="Bagaimana pengalaman Anda berbelanja di toko kami?" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">Kirim Ulasan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Tertarik untuk memesan?</h3>
+                    <p>Kami siap memberikan informasi yang Anda butuhkan dan melayani setiap pesanan dengan cepat, ramah, dan profesional.</p>
+                    
+                    <div class="contact-detail">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>+62 812-7389-0980</div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-globe"></i>
+                        <div>www.reallygreatsite.com</div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>meatanamelta@gmail.com</div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>Jl. Daging Premium No. 123, Jakarta</div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="contactName">Nama</label>
+                            <input type="text" id="contactName" placeholder="Nama Anda">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" placeholder="Email Anda">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactSubject">Subjek</label>
+                            <input type="text" id="contactSubject" placeholder="Subjek pesan">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactMessage">Pesan</label>
+                            <textarea id="contactMessage" placeholder="Tulis pesan Anda di sini"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2025 MeatAnamelta - All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.product-card, .rating-container, .contact-info, .contact-form, .comment-form');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Avatar preview
+        const avatarInput = document.getElementById('avatar');
+        const avatarPreview = document.getElementById('avatarPreview');
+        
+        avatarInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarPreview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Review form submission
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih atas ulasan Anda! Ulasan Anda akan ditampilkan setelah proses moderasi.');
+            this.reset();
+            avatarPreview.src = 'https://randomuser.me/api/portraits/lego/1.jpg';
+        });
+        
+        // Set initial state for animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.product-card, .rating-container, .contact-info, .contact-form, .comment-form');
+            
+            elements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                if (element.classList.contains('contact-info')) {
+                    element.style.transform = 'translateX(-20px)';
+                } else if (element.classList.contains('contact-form') || element.classList.contains('comment-form')) {
+                    element.style.transform = 'translateX(20px)';
+                } else {
+                    element.style.transform = 'translateY(20px)';
+                }
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            // Trigger once on load in case elements are already in view
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
